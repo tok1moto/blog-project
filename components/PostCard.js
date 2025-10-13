@@ -1,14 +1,17 @@
 import Link from 'next/link';
+import ClientOnly from '@/components/ClientOnly';
 
 export default function PostCard({ post }) {
-  const date = new Date(post.date).toLocaleDateString();
+  const d = new Date(post.date);
   return (
     <article className="rounded border border-gray-200 dark:border-gray-700 p-4 hover:shadow-sm transition">
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-semibold">
           <Link href={`/posts/${post.id}`}>{post.title}</Link>
         </h3>
-        <span className="text-xs text-gray-500">{date}</span>
+        <ClientOnly fallback={<span className="text-xs text-gray-500">&nbsp;</span>}>
+          <span className="text-xs text-gray-500">{d.toLocaleDateString()}</span>
+        </ClientOnly>
       </div>
       <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">by {post.author}</p>
       <div className="mt-2 flex flex-wrap gap-2">

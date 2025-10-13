@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import NavBar from '@/components/NavBar';
 import { deletePost, getPost } from '@/lib/api';
 import Toast from '@/components/Toast';
+import ClientOnly from '@/components/ClientOnly';
 
 export default function PostDetailPage() {
   const router = useRouter();
@@ -39,7 +40,7 @@ export default function PostDetailPage() {
     }, 150);
   }
 
-  const date = post ? new Date(post.date).toLocaleString() : '';
+  const date = post ? new Date(post.date) : null;
 
   return (
     <div>
@@ -58,7 +59,9 @@ export default function PostDetailPage() {
                 <button onClick={onDelete} disabled={deleting} className="px-3 py-1 border rounded text-sm text-red-600 border-red-300 dark:border-red-700">{deleting ? 'Deleting…' : 'Delete'}</button>
               </div>
             </div>
-            <p className="text-sm text-gray-500 mt-1">by {post.author} • Published on {date}</p>
+            <ClientOnly fallback={<p className="text-sm text-gray-500 mt-1">by {post.author}</p>}>
+              <p className="text-sm text-gray-500 mt-1">by {post.author} • Published on {date ? date.toLocaleString() : ''}</p>
+            </ClientOnly>
             <div className="mt-3 flex flex-wrap gap-2">
               {(post.tags || []).map(t => (
                 <span key={t} className="text-xs bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded">{t}</span>

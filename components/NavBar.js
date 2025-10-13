@@ -1,36 +1,23 @@
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { Button } from '@/components/ui/button';
+import ModeToggle from '@/components/ModeToggle';
+import { Plus } from 'lucide-react';
 
 export default function NavBar() {
-  const [theme, setTheme] = useState('light');
-  useEffect(() => {
-    const saved = typeof window !== 'undefined' ? localStorage.getItem('theme') : null;
-    const initial = saved || 'light';
-    setTheme(initial);
-    if (typeof document !== 'undefined') {
-      document.documentElement.classList.toggle('dark', initial === 'dark');
-    }
-  }, []);
-
-  function toggleTheme() {
-    const next = theme === 'dark' ? 'light' : 'dark';
-    setTheme(next);
-    if (typeof document !== 'undefined') {
-      document.documentElement.classList.toggle('dark', next === 'dark');
-    }
-    if (typeof window !== 'undefined') localStorage.setItem('theme', next);
-  }
-
   return (
-    <nav className="border-b border-gray-200 dark:border-gray-700">
+    <nav className="border-b border-gray-200 dark:border-gray-700 bg-white/60 dark:bg-gray-900/60 backdrop-blur">
       <div className="container flex items-center justify-between py-4">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
           <Link href="/" className="font-semibold text-lg">My Blog</Link>
-          <Link href="/create" className="text-sm text-blue-600 dark:text-blue-400">New Post</Link>
         </div>
-        <button onClick={toggleTheme} className="px-3 py-1 rounded border border-gray-300 dark:border-gray-600 text-sm">
-          {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
-        </button>
+        <div className="flex items-center gap-3">
+          <Link href="/create">
+            <Button>
+              <Plus className="mr-2" size={16} /> New Post
+            </Button>
+          </Link>
+          <ModeToggle />
+        </div>
       </div>
     </nav>
   );
