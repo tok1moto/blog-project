@@ -1,6 +1,9 @@
 # Personal Blogging Platform (Next.js Frontend)
 
-Interactive single-page blog UI built with Next.js, Tailwind CSS, and a mock REST API backed by `localStorage`. Supports CRUD: list, search/filter, view, create, edit, and delete posts.
+An interactive single-page blogging platform built with Next.js and Tailwind CSS, featuring a smooth and responsive UI powered by shadcn/ui components.
+The app supports full CRUD functionality — users can list, search/filter, view, create, edit, and delete posts — with a mock REST API backed by localStorage for offline testing and a Node.js + Express + MongoDB backend for persistent data storage.
+The backend API manages all blog operations and provides endpoints for fetching, creating, updating, and deleting posts. MongoDB ensures scalability and flexibility in storing post data, while Express handles routing and middleware efficiently.
+This project demonstrates end-to-end web app development — from frontend interactivity (Next.js) to backend API design (Express) and database integration (MongoDB).
 
 ## Features
 - Responsive layout with Tailwind
