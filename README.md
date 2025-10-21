@@ -1,6 +1,13 @@
 # Brutalist Blog Platform
 
+<<<<<<< HEAD
 A bold, uncompromising blogging platform built with modern brutalist design principles.
+=======
+An interactive single-page blogging platform built with Next.js and Tailwind CSS, featuring a smooth and responsive UI powered by shadcn/ui components.
+The app supports full CRUD functionality — users can list, search/filter, view, create, edit, and delete posts — with a mock REST API backed by localStorage for offline testing and a Node.js + Express + MongoDB backend for persistent data storage.
+The backend API manages all blog operations and provides endpoints for fetching, creating, updating, and deleting posts. MongoDB ensures scalability and flexibility in storing post data, while Express handles routing and middleware efficiently.
+This project demonstrates end-to-end web app development — from frontend interactivity (Next.js) to backend API design (Express) and database integration (MongoDB).
+>>>>>>> 11dea48171443b611f83f693043daf449ef987f1
 
 ## 🎨 Design Philosophy
 
